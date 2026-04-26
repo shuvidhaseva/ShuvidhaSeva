@@ -654,6 +654,34 @@
         /* Smaller text for minimum quantity warning */
         #pdpMinQtyWarning { color: var(--danger); font-size: 0.85em; font-weight: 600; margin-top: 5px;}
         
+        /* NEW: Social Media Icons Styles */
+        .social-icon-link {
+            text-decoration: none;
+            display: inline-block; /* Ensure proper layout */
+        }
+        .social-icon {
+            width: 40px; /* Width of the rectangle */
+            height: 40px; /* Height of the rectangle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px; /* Rounded corners for the rectangle */
+            color: white; /* Icon color */
+            font-size: 1.5em; /* Size of the icon */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.2s ease-in-out;
+        }
+        .social-icon:active {
+            transform: scale(0.95); /* Slight shrink on click */
+        }
+
+        /* Specific platform colors */
+        .social-icon.facebook { background-color: #1877F2; } /* Blue */
+        .social-icon.instagram { background-color: #E1306C; } /* Pinkish-Red */
+        .social-icon.whatsapp { background-color: #25D366; } /* Green */
+        .social-icon.youtube { background-color: #FF0000; } /* Red */
+        /* END NEW: Social Media Icons Styles */
+
     </style>
 </head>
 <body>
@@ -1116,7 +1144,7 @@
                 <p>Order place hone ke baad agar humne saaman pack kar diya hai, toh cancellation swikar nahi kiya jayega।</p>
 
                 <h4 style="color:var(--primary-color); font-weight:700; margin-top:15px; margin-bottom:5px;">6. Contact Us</h4>
-                <p> Kisi bhi shikayat ya sawal ke liye aap humein <strong style="color:var(--primary-color);">shuvidhaseva1@gmail.com</strong> par email kar sakte hain.</p>
+                <p>Kisi bhi shikayat ya sawal ke liye aap humein <strong style="color:var(--primary-color);">shuvidhaseva1@gmail.com</strong> par email kar sakte hain.</p>
                 
                 <div style="text-align: center; margin-top: 30px; font-size: 0.8em; color: var(--light-text);">
                     &copy; 2026 Shuvidha Seva. All Rights Reserved.
@@ -1171,7 +1199,7 @@
                 <p>Shuvidha Seva par order karne ke liye minimum 3 items aur ₹50 ka order hona anivarya hai। Har order par ₹10 delivery charge liya jayega।</p>
 
                 <h4 style="color:var(--primary-color); font-weight:700; margin-top:15px; margin-bottom:5px;">5. Contact Us</h4>
-                <p>Agar aapko koi sawal hai, toh aap humse <strong style="color:var(--primary-color);">shuvidhaseva1@gmail.com</strong> par sampark kar sakte hain ya app ke support section mein message karein।</p>
+                <p> Agar aapko koi sawal hai, toh aap humse <strong style="color:var(--primary-color);">shuvidhaseva1@gmail.com</strong> par sampark kar sakte hain ya app ke support section mein message karein।</p>
 
                 <div style="text-align: center; margin-top: 30px; font-size: 0.8em; color: var(--light-text);">
                     &copy; 2026 Shuvidha Seva. All Rights Reserved.
@@ -1310,7 +1338,7 @@ const firebaseConfig = {
         // MODIFIED: Updated Minimum Order Constants
         const MIN_ORDER_QTY = 3; 
         const MIN_ORDER_AMOUNT = 50;
-        // DELETED: Removed Max Item Quantity constraint as requested by user.
+        // DELETED: Removed Max Item Quantity constraint as requested.
         const MAX_ITEM_QTY = Infinity; // NEW: Setting to infinity to disable max quantity check as requested
         
         // --- UPDATED DATA PLACEHOLDERS (Fast Food, Grocery, Treats, with new images) ---
@@ -2052,7 +2080,7 @@ const firebaseConfig = {
                 const wishIconClass = `fas ${isWished ? 'fa-heart' : 'fa-heart'}`; // Heart icon always, class determines state
                 
                 const discount = d.discount || 0;
-                // FIX: Use the pre-calculated customerPrice for card display
+                // FIX: Use customerPrice for the card display
                 const discountedPrice = parseFloat(d.customerPrice || 0); 
                 // Reconstruct original price (which is the final price before discount)
                 const originalPrice = parseFloat(d.price.final || 0);
